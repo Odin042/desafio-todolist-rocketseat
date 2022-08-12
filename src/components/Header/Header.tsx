@@ -6,8 +6,11 @@ import styles from './Header.module.css'
 
 export const Header = () => {
   return (
-    <header className={styles.header}>
+    <div >
+      <header className={styles.header}>
         <img src={Logo} alt="react" />
-    </header>
+      </header>
+    </div>
+    
   )
 }

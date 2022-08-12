@@ -7,17 +7,18 @@ export const TaskBar = () => {
     <div className={styles.container}>
       <div className={styles.input}>
         <input type="text" placeholder="Adicione uma nova tarefa" />
+        <button>Criar</button>
       </div>
-      <button>Criar</button>
-      <div className={styles.taskEmpty}>
+      <div className={styles.taskheader}>
+        <p>Tarefas Criadas</p>
+        <p> Concluidas </p>
+      </div>
+      <div className={styles.taskempty}>
         <strong>Você ainda não tem tarefas cadastradas</strong>
         <p>Crie tarefas e organize tarefas a fazer</p>
       </div>
 
-      <div className={styles.labels}>
-        |<p>Tarefas Criadas</p>
-        <p> Concluidas </p>
-      </div>
+      
     </div>
   );
 };
