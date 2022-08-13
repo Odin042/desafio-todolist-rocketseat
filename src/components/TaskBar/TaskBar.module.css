@@ -32,17 +32,36 @@
     display: flex;
     border-radius: 10px;
     background: transparent;
-    width: 650px;
     padding:0 100px;
-    margin-top: 64px;
-    text-align: justify;
+    margin:120px 0 120px 100px;
+    text-align: center;
 }
 
 .taskheader > p{
     display: inline;
+    width: 500px;
     position: relative;  
     padding:0 100px 0 0;
     
+}
+.taskname{
+    color: var(--blue)
+}
+.taskfinish{
+    color: var(--purple)
+}
+
+.taskempty {
+    margin-top: 40px;
+    font-size: 1rem;
+    
+}
+.taskempty>strong{
+    color: var(--gray-300);
+}
+.taskempty>p{
+    color: var(--gray-300);
+    margin-left: 10px;
 }
 
     
