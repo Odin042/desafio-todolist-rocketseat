@@ -20,12 +20,22 @@
 .input>button {
     height: 52px;
     width: 90px;
+    border: none;
     background-color: var(--blue-dark);
     color: var(--gray-100);
-    padding: 10px ;
+    font-weight: bold;
     margin-left: 8px;
     border-radius: 5px;
     cursor: pointer;
+
+    transition: color 0.2s, background-color 0.2s;
+    
+    
+}
+
+.input>button:hover {
+    background-color: var(--blue);
+    color: var(--gray-100);
 }
 
 .taskheader {
@@ -39,8 +49,7 @@
 
 .taskheader > p{
     display: inline;
-    width: 500px;
-    position: relative;  
+    width: 500px; 
     padding:0 100px 0 0;
     
 }
@@ -52,17 +61,26 @@
 }
 
 .taskempty {
+    display: grid;
+    grid-template-columns: 1fr;
+    
     margin-top: 40px;
     font-size: 1rem;
     
 }
 .taskempty>strong{
     color: var(--gray-300);
+    margin-top: 30px;
 }
 .taskempty>p{
     color: var(--gray-300);
     margin-left: 10px;
 }
+
+.taskicon{
+    margin-left: 100px;
+}
+
 
     
 
