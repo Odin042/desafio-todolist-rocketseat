@@ -9,13 +9,18 @@ export const TaskBar = () => {
     "Isso é uma task nova"]);
   const[countTask, setCountTask] = React.useState(0);
 
+  const handleNewTask = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.input}>
         <input type="text" placeholder="Adicione uma nova tarefa" />
         <button>
           Criar
-          <PlusCircle />
         </button>
       </div>
       <div className={styles.taskheader}>
@@ -26,6 +31,14 @@ export const TaskBar = () => {
         <Clipboard className={styles.taskicon} size={70} />
         <strong>Você ainda não tem tarefas cadastradas</strong>
         <p>Crie tarefas e organize tarefas a fazer</p>
+      </div>
+      <div className={styles.taskbox}>
+        {NewTask.map(task => {
+          <div className={styles.taskcreate}>
+            <input type="checkbox"></input>
+          </div>
+        })}
+
       </div>
 
       
