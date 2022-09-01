@@ -1,9 +1,7 @@
 import React from "react";
-import { Clipboard, PlusCircle } from "phosphor-react";
+import { Clipboard, Circle, CheckCircle, Trash } from "phosphor-react";
 
 import styles from "./TaskBar.module.css";
-
-
 
 export const TaskBar = () => {
   const [newTask, setNewTask] = React.useState("");
@@ -20,29 +18,29 @@ export const TaskBar = () => {
 
     setListTask([...listTask, newTask]);
     setNewTask("");
-  }
+  };
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
 
     setNewTask(inputValue);
-  }
+  };
 
   return (
     <div className={styles.container}>
       <div className={styles.input}>
-        <input type="text" placeholder="Adicione uma nova tarefa" onChange={handleInput} />
-        <button
-          onClick={() => handleNewTask}
-        >
-          Criar
-        </button>
+        <input
+          type="text"
+          placeholder="Adicione uma nova tarefa"
+          onChange={handleInput}
+        />
+        <button onClick={() => handleNewTask}>Criar</button>
       </div>
       <div className={styles.taskheader}>
-        <p className={styles.taskname}>Tarefas Criadas</p>
+        <p className={styles.taskcreates}>Tarefas Criadas</p>
         <p className={styles.taskfinish}> Concluidas </p>
       </div>
-      {listTask ? 
+      {listTask ? (
         listTask.map((task, index) => (
           <div className={styles.task} key={index}>
             <div className={styles.taskname}>
@@ -50,15 +48,14 @@ export const TaskBar = () => {
               <p>{task}</p>
             </div>
           </div>
-        )):
-      <div className={styles.taskempty}>
-            <Clipboard className={styles.taskicon} size={70} />
-            <strong>Você ainda não tem tarefas cadastradas</strong>
-            <p>Crie tarefas e organize tarefas a fazer</p>
-      </div>
-      }
+        ))
+      ) : (
+        <div>
+          <Clipboard className={styles.taskicon} size={70} />
+          <strong>Você ainda não tem tarefas cadastradas</strong>
+          <p>Crie tarefas e organize tarefas a fazer</p>
+        </div>
+      )}
     </div>
-     
   );
-}    
-
+};
