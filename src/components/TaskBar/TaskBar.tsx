@@ -1,29 +1,28 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { Clipboard, Circle, CheckCircle, Trash } from "phosphor-react";
+import { ITask } from "./interfaces";
 
 import styles from "./TaskBar.module.css";
+import { TodoTask } from "./components/TodoTask";
 
 export const TaskBar = () => {
-  const [newTask, setNewTask] = React.useState("");
-  const [listTask, setListTask] = React.useState([""]);
-  const [countTask, setCountTask] = React.useState(0);
-  const [checked, setChecked] = React.useState(false);
+  const [task, setTask] = React.useState<string>("");
+  const [todoList, setTodoList] = React.useState<ITask[]>([]);
 
-  const handleNewTask = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
 
-    if (!newTask) {
-      return alert("Insira um nome para a tarefa");
-    }
-
-    setListTask([...listTask, newTask]);
-    setNewTask("");
+  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    setTask(event.target.value);
   };
 
-  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = event.target.value;
-
-    setNewTask(inputValue);
+  const handleAddTask = (): void => {
+    if(!task) return
+    const newTask = { name: task };
+    setTodoList([...todoList, newTask]);
+    if(task === ""){
+      alert("Digite um valor valido")
+    }
+    setTask("")
+    console.log(todoList)
   };
 
   return (
@@ -31,31 +30,21 @@ export const TaskBar = () => {
       <div className={styles.input}>
         <input
           type="text"
+          value={task}
           placeholder="Adicione uma nova tarefa"
-          onChange={handleInput}
+          onChange={handleChange}
         />
-        <button onClick={() => handleNewTask}>Criar</button>
+        <button onClick={handleAddTask}>Criar</button>
       </div>
       <div className={styles.taskheader}>
         <p className={styles.taskcreates}>Tarefas Criadas</p>
         <p className={styles.taskfinish}> Concluidas </p>
       </div>
-      {listTask ? (
-        listTask.map((task, index) => (
-          <div className={styles.task} key={index}>
-            <div className={styles.taskname}>
-              <input type="checkbox" onChange={() => setChecked(!checked)} />
-              <p>{task}</p>
-            </div>
-          </div>
-        ))
-      ) : (
-        <div>
-          <Clipboard className={styles.taskicon} size={70} />
-          <strong>Você ainda não tem tarefas cadastradas</strong>
-          <p>Crie tarefas e organize tarefas a fazer</p>
-        </div>
-      )}
+      <div className={styles.taskContainer}>
+           {todoList.map((task: ITask, key: number) => {
+                  return <TodoTask key={key} task={task} TodoTask={false}  />
+        })}
+      </div>
     </div>
   );
 };
