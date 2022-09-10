@@ -42,7 +42,7 @@ export const TaskBar = () => {
       </div>
       <div className={styles.taskContainer}>
            {todoList.map((task: ITask, key: number) => {
-                  return <TodoTask key={key} task={task} TodoTask={false}  />
+                  return <TodoTask key={key} task={task}  />
         })}
       </div>
     </div>
